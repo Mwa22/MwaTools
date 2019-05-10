@@ -1,2 +1,2 @@
 # MwaTools
-Application that gives several tools for web development
+Application that provides several tools for web development

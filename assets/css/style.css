@@ -1,0 +1,123 @@
+@import url("https://fonts.googleapis.com/css?family=Baloo+Bhai|Montserrat|Open+Sans|Roboto");
+.color, .color::after {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: #dddddd;
+}
+
+.hidden-input {
+  position: absolute;
+  top: -9999px;
+}
+
+.title-bar {
+  -webkit-app-region: drag;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 1.5rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: #202225;
+  color: #A6A7A8;
+}
+
+.title-bar .title {
+  position: relative;
+  left: 20px;
+  font-family: "Baloo Bhai";
+}
+
+.title-btn i {
+  -webkit-app-region: no-drag;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.colors-container {
+  margin: 20px 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.color {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: 0 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.color.show-hover::before {
+  content: "COPY";
+  font-family: "Open sans";
+  font-size: 0.8em;
+  color: white;
+  padding: 5px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  opacity: 0;
+  -webkit-transition-duration: 0.2s;
+          transition-duration: 0.2s;
+}
+
+.color:hover::before {
+  opacity: 1;
+}
+
+.color::after {
+  content: "Copied";
+  font-family: "Open sans";
+  width: 100%;
+  height: 45%;
+  background-color: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  opacity: 0;
+  -webkit-transition-duration: 0.2s;
+          transition-duration: 0.2s;
+}
+
+.clicked-effect::after {
+  opacity: 1;
+}
+
+.hex {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  color: white;
+  font-size: 0.7em;
+  font-family: "Roboto";
+}
+
+.hex::before {
+  content: '#';
+}
+/*# sourceMappingURL=style.css.map */

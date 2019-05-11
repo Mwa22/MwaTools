@@ -3,6 +3,8 @@
 $lightgrey: #dddddd;
 $darkgrey: #202225;
 $grey: #A6A7A8;
+$red: #d63031;
+$green: #2ecc71;
 
 %flex-center {
     display: flex;
@@ -28,14 +30,23 @@ body {
     top: -9999px;
 }
 
+.container {
+    padding-top: 1.5rem;
+}
+
 .title-bar {
     -webkit-app-region: drag;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     display: flex;
     height: 1.5rem;
     align-items: center;
     justify-content: space-between;
     background-color: $darkgrey;
     color: $grey;
+    z-index: 99;
 
     .title {
         position: relative;
@@ -63,7 +74,7 @@ body {
     position: relative;
     width: 100px;
     height: 100px;
-    margin: 0 5px;
+    margin: 0 4px 5px 4px;
     border-radius: 5px;
     cursor: pointer;
 
@@ -79,7 +90,7 @@ body {
         transition-duration: 0.2s;
     }
 
-    &:hover::before {
+    &.show-hover:hover::before {
         opacity: 1;
     }
 
@@ -88,11 +99,28 @@ body {
         content: "Copied";
         font-family: "Open sans";
         width: 100%;
-        height: 45%;
+        height: 40%;
         background-color: rgba(255, 255, 255, 0.5);
         position: absolute;
         opacity: 0;
         transition-duration: 0.2s;
+    }
+
+    i {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        color: $red;
+        opacity: 0;
+        transition-duration: 0.2s;
+
+        &:hover {
+            text-shadow: 0 0 5px darken($red, 10%);
+        }
+    }
+
+    &:hover i {
+        opacity: 1;
     }
 }
 
@@ -112,5 +140,82 @@ body {
 
     &::before {
         content: '#';
+    }
+}
+
+.add-color {
+    @extend %flex-center;
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 4px 5px 4px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px solid black;
+    box-sizing: border-box;
+
+    i {
+        font-size: 1.2em;
+    }
+}
+
+.new-color {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 4px 5px 4px;
+    border-radius: 5px;
+
+    &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgba(255, 255, 255, .2);
+        opacity: 0;
+        transition-duration: 0.2s;
+    }
+
+    &:hover::before {
+        opacity: 1;
+    }
+
+    i {
+        cursor: pointer;
+        z-index: 1;
+    }
+
+    .fa-times {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        color: $red;
+
+        &:hover {
+            text-shadow: 0 0 5px darken($red, 10%);
+        }
+    }
+
+    .fa-check {
+        color: $green;
+        font-size: 1.2em;
+
+        &:hover {
+            text-shadow: 0 0 5px darken($green, 10%);
+        }
+    }
+
+    input {
+        position: absolute;
+        right: 5px;
+        bottom: 5px;
+        font-size: 0.8em;
+        width: 75px;
     }
 }

@@ -1,10 +1,14 @@
-@import url('https://fonts.googleapis.com/css?family=Baloo+Bhai|Montserrat|Open+Sans|Roboto');
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Roboto|Open+Sans|Baloo+Bhai|Ubuntu');
 
 $lightgrey: #dddddd;
 $darkgrey: #202225;
 $grey: #A6A7A8;
 $red: #d63031;
 $green: #2ecc71;
+$blue: #4CA1AF;
+$fadedred: #c0392b;
+$orange: #d35400;
+$pink: #e84393;
 
 %flex-center {
     display: flex;
@@ -218,4 +222,139 @@ body {
         font-size: 0.8em;
         width: 75px;
     }
+}
+
+.fonts-container {
+    @extend %flex-center;
+    flex-direction: column;
+    margin: 20px 10px;
+}
+
+.fonts {
+    @extend %flex-center;
+    flex-wrap: wrap;
+}
+
+.font {
+    @extend %flex-center;
+    width: 150px;
+    height: 1.8em;
+    border: 1px solid $darkgrey;
+    margin: 5px;
+    border-radius: 5px;
+    font-size: 1.5em;
+    cursor: pointer;
+    user-select: none;
+}
+
+.font-enable {
+    background-color: $green;
+}
+
+.output-container {
+    display: none;
+    margin-top: 20px;
+    width: 500px;
+    background-color: $grey;
+    box-sizing: border-box;
+    padding: 10px;
+    position: relative;
+}
+
+.output {
+    font-family: Ubuntu;
+    font-size: .9em;
+    word-break: break-all;
+
+    .import {
+        color: $pink;
+    }
+
+    .url {
+        color: $orange;
+    }
+
+    .site {
+        color: $darkgrey;
+    }
+
+    .tokens {
+        color: $darkgrey;
+    }
+
+    .font-name {
+        color: $fadedred;
+    }
+}
+
+.btn-copy {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    bottom: -10px;
+    right: 0;
+    transform: translate(50%, 50%);
+
+    i {
+        color: white;
+        background-color: $blue;
+        border-radius: 50%;
+        padding: 8px 10px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: darken($blue, 5%);
+        }
+
+        &:hover + .info {
+            transform: translateY(0); 
+            opacity: 1;
+        }
+    }
+
+    .info {
+        @extend %flex-center;
+        padding: 0 10px;
+        height: 30px;
+        color: white;
+        background-color: $darkgrey;
+        border-radius: 5px;
+        position: relative;
+        top: 10px;
+        opacity: 0;
+        transform: translateY(-10%);
+        transition-duration: 0.3s;
+
+        &::before {
+            content: "";
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+            background-color: $darkgrey;
+        }
+    }
+}
+
+#monsterrat {
+    font-family: Montserrat;
+}
+
+#roboto {
+    font-family: Roboto;
+}
+
+#open-sans {
+    font-family: "Open sans";
+}
+
+#baloo-bhai {
+    font-family: "Baloo bhai";
+}
+
+#ubuntu {
+    font-family: Ubuntu;
 }

@@ -5,14 +5,14 @@ function copyToCb(elem) {
     // Add it to body.
     $("body").append($temp);
     // Adding value into it.
-    $temp.val($(elem).text()).select();
+    $temp.val($(elem).text().trim()).select();
     // Copy to clipboard.
     document.execCommand("copy");
     $temp.remove();
 }
 
 // Display effect when copied.
-function copiedSuccessfully(elem) {    
+function copiedColorSuccessfully(elem) {    
     // Display copied.
     $(elem).toggleClass("clicked-effect");
     // Disable ::before.
@@ -168,11 +168,11 @@ function fullColorHex(rgb) {
 function colorCopyEvent(colorElem) {
     $(colorElem).click((event) => {
         // Get the hexadecimal text.
-        const hex = $(event.target).children()[0];
+        const hex = $(event.target).children()[1];
         copyToCb(hex);
 
         // Display effect.
-        copiedSuccessfully(event.target);
+        copiedColorSuccessfully(event.target);
     });
 }
 

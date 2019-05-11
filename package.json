@@ -1,6 +1,6 @@
 {
   "name": "mwatools",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Application that provides several tools for web development",
   "main": "main.js",
   "scripts": {

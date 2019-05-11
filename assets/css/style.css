@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css?family=Baloo+Bhai|Montserrat|Open+Sans|Roboto");
-.color, .color::after, .add-color {
+@import url("https://fonts.googleapis.com/css?family=Montserrat|Roboto|Open+Sans|Baloo+Bhai|Ubuntu");
+.color, .color::after, .add-color, .fonts-container, .fonts, .font, .btn-copy .info {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -228,5 +228,156 @@ body {
   bottom: 5px;
   font-size: 0.8em;
   width: 75px;
+}
+
+.fonts-container {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 20px 10px;
+}
+
+.fonts {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.font {
+  width: 150px;
+  height: 1.8em;
+  border: 1px solid #202225;
+  margin: 5px;
+  border-radius: 5px;
+  font-size: 1.5em;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.font-enable {
+  background-color: #2ecc71;
+}
+
+.output-container {
+  display: none;
+  margin-top: 20px;
+  width: 500px;
+  background-color: #A6A7A8;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  position: relative;
+}
+
+.output {
+  font-family: Ubuntu;
+  font-size: .9em;
+  word-break: break-all;
+}
+
+.output .import {
+  color: #e84393;
+}
+
+.output .url {
+  color: #d35400;
+}
+
+.output .site {
+  color: #202225;
+}
+
+.output .tokens {
+  color: #202225;
+}
+
+.output .font-name {
+  color: #c0392b;
+}
+
+.btn-copy {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: absolute;
+  bottom: -10px;
+  right: 0;
+  -webkit-transform: translate(50%, 50%);
+          transform: translate(50%, 50%);
+}
+
+.btn-copy i {
+  color: white;
+  background-color: #4CA1AF;
+  border-radius: 50%;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+.btn-copy i:hover {
+  background-color: #44919d;
+}
+
+.btn-copy i:hover + .info {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+  opacity: 1;
+}
+
+.btn-copy .info {
+  padding: 0 10px;
+  height: 30px;
+  color: white;
+  background-color: #202225;
+  border-radius: 5px;
+  position: relative;
+  top: 10px;
+  opacity: 0;
+  -webkit-transform: translateY(-10%);
+          transform: translateY(-10%);
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+}
+
+.btn-copy .info::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%) rotate(45deg);
+          transform: translate(-50%, -50%) rotate(45deg);
+  background-color: #202225;
+}
+
+#monsterrat {
+  font-family: Montserrat;
+}
+
+#roboto {
+  font-family: Roboto;
+}
+
+#open-sans {
+  font-family: "Open sans";
+}
+
+#baloo-bhai {
+  font-family: "Baloo bhai";
+}
+
+#ubuntu {
+  font-family: Ubuntu;
 }
 /*# sourceMappingURL=style.css.map */

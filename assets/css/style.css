@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Montserrat|Roboto|Open+Sans|Baloo+Bhai|Ubuntu");
+@import url("https://fonts.googleapis.com/css?family=Montserrat|Roboto|Open+Sans|Baloo+Bhai|Ubuntu|Muli");
 .color, .color::after, .add-color, .fonts-container, .fonts, .font, .btn-copy .info, .add-font {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -399,7 +399,7 @@ body {
   height: 2rem;
   border-radius: 5px;
   cursor: pointer;
-  margin: 0 30px;
+  margin: 13px 30px;
   border: 2px solid #202225;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -466,5 +466,76 @@ body {
   background-color: transparent;
   outline: none;
   border: none;
+}
+
+.cdn-container {
+  margin: 20px 10px;
+}
+
+.cdn {
+  background-color: #4CA1AF;
+  margin: 10px 0;
+  width: 550px;
+  -webkit-box-shadow: 0 0 5px black;
+          box-shadow: 0 0 5px black;
+  padding: 5px 10px 10px 10px;
+  height: 36px;
+  overflow: hidden;
+  -webkit-transition-duration: 0.5s;
+          transition-duration: 0.5s;
+}
+
+.cdn:hover {
+  height: 140px;
+}
+
+.cdn-name {
+  font-family: Muli;
+  padding: 5px;
+  font-size: 1.3rem;
+}
+
+.cdn-url {
+  background-color: white;
+  font-family: Ubuntu;
+  padding: 10px 5px;
+  margin: 10px 0;
+  word-break: break-all;
+  font-size: .9em;
+  border-left: 5px solid #C4E0E5;
+}
+
+.cdn-url .tokens {
+  color: #202225;
+}
+
+.cdn-url .balise {
+  color: #e84393;
+}
+
+.cdn-url .attr {
+  color: #d35400;
+}
+
+.cdn-url .attrVal {
+  color: #c0392b;
+}
+
+.cdn-copy {
+  padding: 5px 10px;
+  cursor: pointer;
+  background-color: #C4E0E5;
+  border: none;
+  outline: none;
+  font-family: Roboto;
+  color: #192a56;
+  font-size: 1rem;
+  width: 120px;
+  text-align: center;
+}
+
+.cdn-copy:hover {
+  -webkit-box-shadow: 0 0 5px #202225;
+          box-shadow: 0 0 5px #202225;
 }
 /*# sourceMappingURL=style.css.map */

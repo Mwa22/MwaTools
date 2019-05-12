@@ -152,7 +152,6 @@ body {
   position: relative;
   width: 50px;
   height: 50px;
-  margin: 0 4px 5px 4px;
   border-radius: 5px;
   cursor: pointer;
   margin: 25px;
@@ -262,11 +261,31 @@ body {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  position: relative;
 }
 
 .font:hover {
   -webkit-box-shadow: 0 0 5px black;
           box-shadow: 0 0 5px black;
+}
+
+.font i {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: #d63031;
+  opacity: 0;
+  -webkit-transition-duration: 0.2s;
+          transition-duration: 0.2s;
+  font-size: .8rem;
+}
+
+.font i:hover {
+  text-shadow: 0 0 5px #b02324;
+}
+
+.font:hover i {
+  opacity: 1;
 }
 
 .font-enable {
@@ -376,13 +395,24 @@ body {
 }
 
 .add-font {
+  width: 100px;
+  height: 2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 30px;
+  border: 2px solid #202225;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-transition-duration: 0.1s;
+          transition-duration: 0.1s;
+  font-size: 1.2em;
+}
+
+.add-font:hover {
   width: 150px;
   height: 3rem;
-  border: 1px solid #202225;
   margin: 5px;
-  border-radius: 5px;
-  font-size: 1.5em;
-  cursor: pointer;
+  font-size: 1.4em;
 }
 
 .new-font {

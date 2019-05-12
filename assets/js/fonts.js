@@ -1,3 +1,18 @@
+// Capitalize a string.
+function capitalize(text) {
+    let result = "";
+
+    let arrayWord = text.split(' ');
+    arrayWord.forEach(word => {
+        result += word[0].toUpperCase() + word.slice(1);
+        result += ' ';
+    });
+
+    // Remove last space.
+    result = result.slice(0, result.length-1);
+    return result;
+}
+
 // Enable/disable font color.
 function toggleEnableColor(elem) {
     $(elem).toggleClass("font-enable");
@@ -33,7 +48,7 @@ function addFont(font) {
 
 // Removing font from localstorage.
 function removeFont(font) {
-    let fonts = localStorage.getItem("font").split(',');
+    let fonts = localStorage.getItem("fonts").split(',');
 
     if (fonts.includes(font)) {
         fonts.splice(fonts.indexOf(font), 1);
@@ -49,11 +64,14 @@ function resetFonts() {
 
     $(".fonts").empty();
     generateFonts();
+    setFontFamily();
 }
 
 // Create a new font element.
 function createFontElem(font) {
-    return $("<div class='font'>").text(font);
+    return $("<div class='font'>")
+        .text(font)
+        .append("<i class='fas fa-times'>");
 }
 
 // Generate fonts elements.
@@ -221,6 +239,28 @@ function hideNewFontCreation() {
     $(".new-font").css("display", "none");
 }
 
+// Font select event.
+function fontSelectEvent(fontElem) {
+    $(fontElem).click((event) => {
+        toggleEnableColor($(event.target));
+        updateImportText();
+    });
+}
+
+// Remove font element event.
+function removeFontEvent(fontElem) {
+    $(fontElem).find(".fa-times").click((event) => {
+
+        // Get font name.
+        const fontName = $(event.target).parent().text();
+        removeFont(fontName);
+
+        $(event.target).parent().remove();
+
+        updateImportText();
+    });
+}
+
 $(document).ready(() => {
 
     createDefaultFonts();
@@ -228,11 +268,11 @@ $(document).ready(() => {
     loadFonts(getAllFonts());
     setFontFamily();
 
-    // Toggle font.
-    $(".font").click((event) => {
-        toggleEnableColor($(event.target));
-        updateImportText();
-    });
+
+    // Font select event.
+    fontSelectEvent($(".font"));
+    // Remove color event.
+    removeFontEvent($(".font"));
 
     // Copy text import in clipboard.
     $(".btn-copy i").click(() => {
@@ -260,6 +300,7 @@ $(document).ready(() => {
     // Adding new font.
     $(".new-font .fa-check").click(() => {
         let value = $(".new-font input").val();
+        value = capitalize(value);
 
         if (value) {
             // Save font in localstorage.
@@ -271,6 +312,10 @@ $(document).ready(() => {
             // Load font.
             loadFonts([value]);
             setFontFamilyElem(fontElem);
+
+            // Load events.
+            fontSelectEvent(fontElem);
+            removeFontEvent(fontElem);
     
             // Hide new font creation.
             hideNewFontCreation();

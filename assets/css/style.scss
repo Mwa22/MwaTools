@@ -152,7 +152,6 @@ body {
     position: relative;
     width: 50px;
     height: 50px;
-    margin: 0 4px 5px 4px;
     border-radius: 5px;
     cursor: pointer;
     margin: 25px;
@@ -251,9 +250,28 @@ body {
     font-size: 1.5em;
     cursor: pointer;
     user-select: none;
+    position: relative;
 
     &:hover {
         box-shadow: 0 0 5px black;
+    }
+
+    i {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        color: $red;
+        opacity: 0;
+        transition-duration: 0.2s;
+        font-size: .8rem;
+
+        &:hover {
+            text-shadow: 0 0 5px darken($red, 10%);
+        }
+    }
+
+    &:hover i {
+        opacity: 1;
     }
 }
 
@@ -353,13 +371,22 @@ body {
 
 .add-font {
     @extend %flex-center;
-    width: 150px;
-    height: 3rem;
-    border: 1px solid $darkgrey;
-    margin: 5px;
+    width: 100px;
+    height: 2rem;
     border-radius: 5px;
-    font-size: 1.5em;
     cursor: pointer;
+    margin: 0 30px;
+    border: 2px solid $darkgrey;
+    box-sizing: border-box;
+    transition-duration: 0.1s;
+    font-size: 1.2em;
+
+    &:hover {
+        width: 150px;
+        height: 3rem;
+        margin: 5px;
+        font-size: 1.4em;
+    }
 }
 
 .new-font {

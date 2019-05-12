@@ -150,16 +150,22 @@ body {
 .add-color {
     @extend %flex-center;
     position: relative;
-    width: 100px;
-    height: 100px;
+    width: 50px;
+    height: 50px;
     margin: 0 4px 5px 4px;
     border-radius: 5px;
     cursor: pointer;
+    margin: 25px;
     border: 2px solid black;
     box-sizing: border-box;
+    transition-duration: 0.1s;
+    font-size: 1.2em;
 
-    i {
-        font-size: 1.2em;
+    &:hover {
+        width: 60px;
+        height: 60px;
+        margin: 20px;
+        font-size: 1.4em;
     }
 }
 
@@ -238,17 +244,21 @@ body {
 .font {
     @extend %flex-center;
     width: 150px;
-    height: 1.8em;
+    height: 3rem;
     border: 1px solid $darkgrey;
     margin: 5px;
     border-radius: 5px;
     font-size: 1.5em;
     cursor: pointer;
     user-select: none;
+
+    &:hover {
+        box-shadow: 0 0 5px black;
+    }
 }
 
 .font-enable {
-    background-color: $green;
+    background-color: $blue;
 }
 
 .output-container {
@@ -325,6 +335,8 @@ body {
         opacity: 0;
         transform: translateY(-10%);
         transition-duration: 0.3s;
+        font-family: Roboto;
+        font-size: .9em;
 
         &::before {
             content: "";
@@ -339,22 +351,62 @@ body {
     }
 }
 
-#monsterrat {
-    font-family: Montserrat;
+.add-font {
+    @extend %flex-center;
+    width: 150px;
+    height: 3rem;
+    border: 1px solid $darkgrey;
+    margin: 5px;
+    border-radius: 5px;
+    font-size: 1.5em;
+    cursor: pointer;
 }
 
-#roboto {
-    font-family: Roboto;
-}
+.new-font {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 3rem;
+    border: 1px solid $darkgrey;
+    margin: 5px;
+    border-radius: 5px;
+    position: relative;
+    cursor: text;
 
-#open-sans {
-    font-family: "Open sans";
-}
+    i {
+        cursor: pointer;
+        z-index: 1;
+    }
 
-#baloo-bhai {
-    font-family: "Baloo bhai";
-}
+    .fa-times {
+        position: absolute;
+        right: 8px;
+        top: 5px;
+        color: $red;
 
-#ubuntu {
-    font-family: Ubuntu;
+        &:hover {
+            text-shadow: 0 0 5px darken($red, 10%);
+        }
+    }
+
+    .fa-check {
+        position: absolute;
+        right: 5px;
+        bottom: 5px;
+        color: $green;
+
+        &:hover {
+            text-shadow: 0 0 5px darken($green, 10%);
+        }
+    }
+
+    input {
+        font-size: 1.5em;
+        width: 75px;
+        text-align: center;
+        background-color: transparent;
+        outline: none;
+        border: none;
+    }
 }

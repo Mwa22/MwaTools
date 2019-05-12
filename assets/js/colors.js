@@ -57,6 +57,15 @@ function removeColor(color) {
     }
 }
 
+// Reset all colors.
+function resetColors() {
+    localStorage.removeItem("colors");
+    createDefaultColors();
+
+    $(".colors-container").empty();
+    generateColors();
+}
+
 // Create a new color element.
 function createColorElem(color) {
     // Create div color.
@@ -70,7 +79,7 @@ function createColorElem(color) {
 }
 
 // Generate colors.
-async function generateColors() {
+function generateColors() {
     const colors = localStorage.getItem("colors").split(',');
     colors.forEach(color => {
         // Adding a color.
@@ -82,11 +91,6 @@ async function generateColors() {
 
     addNewColorCreation();
     addPlusButton();
-}
-
-// Adding new color in json.
-function addColorInJson(colors, newColor) {
-    return colors.hex.append(newColor);
 }
 
 // Add plus button.
@@ -190,7 +194,7 @@ function removeColorEvent(colorElem) {
 
 $(document).ready(async () => {
     createDefaultColors();
-    await generateColors();
+    generateColors();
 
     // Color copy event.
     colorCopyEvent($(".color"));

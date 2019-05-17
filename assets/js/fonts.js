@@ -86,6 +86,60 @@ function generateFonts() {
 
     addNewFontCreation();
     addPlusButtonFont();
+
+    // Font select event.
+    fontSelectEvent($(".font"));
+    // Remove color event.
+    removeFontEvent($(".font"));
+
+    // Copy text import in clipboard.
+    $(".btn-copy i").click(() => {
+        copyToCb($(".output"));
+        copiedFontSuccessfully();
+    });
+
+    // Display new font creation.
+    $(".add-font").click(() => {
+        hidePlusButtonFont();
+        shoNewFontCreation();
+    });
+
+    // Focus on input.
+    $(".new-font").click(() => {
+        $(".new-font input").focus();
+    });
+
+    // Hide new font creation.
+    $(".new-font .fa-times").click(() => {
+        hideNewFontCreation();
+        showPlusButtonFont();
+    });
+
+    // Adding new font.
+    $(".new-font .fa-check").click(() => {
+        let value = $(".new-font input").val();
+        value = capitalize(value);
+
+        if (value) {
+            // Save font in localstorage.
+            addFont(value);
+    
+            // Insert in the last color position.
+            const fontElem = createFontElem(value).insertBefore(".new-font");
+
+            // Load font.
+            loadFonts([value]);
+            setFontFamilyElem(fontElem);
+
+            // Load events.
+            fontSelectEvent(fontElem);
+            removeFontEvent(fontElem);
+    
+            // Hide new font creation.
+            hideNewFontCreation();
+            showPlusButtonFont();
+        }
+    });
 }
 
 // Set import element.
@@ -262,64 +316,8 @@ function removeFontEvent(fontElem) {
 }
 
 $(document).ready(() => {
-
     createDefaultFonts();
     generateFonts();
     loadFonts(getAllFonts());
     setFontFamily();
-
-
-    // Font select event.
-    fontSelectEvent($(".font"));
-    // Remove color event.
-    removeFontEvent($(".font"));
-
-    // Copy text import in clipboard.
-    $(".btn-copy i").click(() => {
-        copyToCb($(".output"));
-        copiedFontSuccessfully();
-    });
-
-    // Display new font creation.
-    $(".add-font").click(() => {
-        hidePlusButtonFont();
-        shoNewFontCreation();
-    });
-
-    // Focus on input.
-    $(".new-font").click(() => {
-        $(".new-font input").focus();
-    });
-
-    // Hide new font creation.
-    $(".new-font .fa-times").click(() => {
-        hideNewFontCreation();
-        showPlusButtonFont();
-    });
-
-    // Adding new font.
-    $(".new-font .fa-check").click(() => {
-        let value = $(".new-font input").val();
-        value = capitalize(value);
-
-        if (value) {
-            // Save font in localstorage.
-            addFont(value);
-    
-            // Insert in the last color position.
-            const fontElem = createFontElem(value).insertBefore(".new-font");
-
-            // Load font.
-            loadFonts([value]);
-            setFontFamilyElem(fontElem);
-
-            // Load events.
-            fontSelectEvent(fontElem);
-            removeFontEvent(fontElem);
-    
-            // Hide new font creation.
-            hideNewFontCreation();
-            showPlusButtonFont();
-        }
-    });
 });

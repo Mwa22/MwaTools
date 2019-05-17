@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat|Roboto|Open+Sans|Baloo+Bhai|Ubuntu|Muli");
-.color, .color::after, .add-color, .fonts-container, .fonts, .font, .btn-copy .info, .add-font {
+.color, .color::after, .add-color, .fonts-container, .fonts, .font, .btn-copy .info, .add-font, .icons-container, .icon i:not(.close), .add-icon {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -9,6 +9,66 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+@-webkit-keyframes copyIconEffect {
+  0% {
+    font-size: 1.5em;
+  }
+  25% {
+    font-size: 0.8em;
+  }
+  75% {
+    font-size: 1.8em;
+  }
+  100% {
+    font-size: 1.5em;
+  }
+}
+
+@keyframes copyIconEffect {
+  0% {
+    font-size: 1.5em;
+  }
+  25% {
+    font-size: 0.8em;
+  }
+  75% {
+    font-size: 1.8em;
+  }
+  100% {
+    font-size: 1.5em;
+  }
+}
+
+@-webkit-keyframes turnIcon {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  40% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+  100% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+}
+
+@keyframes turnIcon {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  40% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+  100% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
 }
 
 * {
@@ -64,6 +124,13 @@ body {
   -webkit-app-region: no-drag;
   cursor: pointer;
   margin-right: 20px;
+}
+
+.separator {
+  width: 90%;
+  margin: auto;
+  height: 2px;
+  background-color: #202225;
 }
 
 .colors-container {
@@ -475,18 +542,12 @@ body {
 .cdn {
   background-color: #4CA1AF;
   margin: 10px 0;
-  width: 550px;
+  width: 100%;
   -webkit-box-shadow: 0 0 5px black;
           box-shadow: 0 0 5px black;
   padding: 5px 10px 10px 10px;
-  height: 36px;
-  overflow: hidden;
-  -webkit-transition-duration: 0.5s;
-          transition-duration: 0.5s;
-}
-
-.cdn:hover {
-  height: 140px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .cdn-name {
@@ -537,5 +598,125 @@ body {
 .cdn-copy:hover {
   -webkit-box-shadow: 0 0 5px #202225;
           box-shadow: 0 0 5px #202225;
+}
+
+.icons-container {
+  margin: 20px 10px;
+}
+
+.icon {
+  position: relative;
+}
+
+.icon i:not(.close) {
+  font-size: 1.5em;
+  color: white;
+  -webkit-animation-duration: .8s;
+          animation-duration: .8s;
+  width: 50px;
+  height: 50px;
+  margin: 0 5px;
+  cursor: pointer;
+  background-color: #202225;
+  border-radius: 50%;
+}
+
+.icon i:not(.close):hover {
+  text-shadow: 0 0 10px #4CA1AF;
+}
+
+.icon .close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #d63031;
+  font-size: .8rem;
+  cursor: pointer;
+  opacity: 0;
+  -webkit-transition-duration: 0.2s;
+          transition-duration: 0.2s;
+}
+
+.icon .close:hover {
+  text-shadow: 0 0 5px #b02324;
+}
+
+.icon:hover .close {
+  opacity: 1;
+}
+
+.add-icon {
+  font-size: 1.5em;
+  width: 50px;
+  height: 50px;
+  margin: 0 5px;
+  cursor: pointer;
+  border: 2px solid #202225;
+  border-radius: 50%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.add-icon:hover i {
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-duration: 1.5s;
+          animation-duration: 1.5s;
+  -webkit-animation-name: turnIcon;
+          animation-name: turnIcon;
+}
+
+.new-icon {
+  position: relative;
+  display: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 150px;
+  height: 50px;
+  margin: 0 5px;
+  border: 2px solid #202225;
+  border-radius: 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.new-icon i {
+  cursor: pointer;
+  z-index: 1;
+}
+
+.new-icon .fa-times {
+  position: absolute;
+  right: 8px;
+  top: 5px;
+  color: #d63031;
+}
+
+.new-icon .fa-times:hover {
+  text-shadow: 0 0 5px #b02324;
+}
+
+.new-icon .fa-check {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  color: #2ecc71;
+}
+
+.new-icon .fa-check:hover {
+  text-shadow: 0 0 5px #25a25a;
+}
+
+.new-icon input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  text-align: center;
 }
 /*# sourceMappingURL=style.css.map */

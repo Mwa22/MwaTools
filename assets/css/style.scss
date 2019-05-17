@@ -18,6 +18,19 @@ $pink: #e84393;
     align-items: center;
 }
 
+@keyframes copyIconEffect {
+    0% {font-size: 1.5em;}
+    25% {font-size: 0.8em;}
+    75% {font-size: 1.8em;}
+    100% {font-size: 1.5em;}
+}
+
+@keyframes turnIcon {
+    0% {transform: rotate(0deg);}
+    40% {transform: rotate(180deg);}
+    100% {transform: rotate(180deg);}
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -67,6 +80,13 @@ body {
         cursor: pointer;
         margin-right: 20px;
     }
+}
+
+.separator {
+    width: 90%;
+    margin: auto;
+    height: 2px;
+    background-color: $darkgrey;
 }
 
 .colors-container {
@@ -447,16 +467,10 @@ body {
 .cdn {
     background-color: $blue;
     margin: 10px 0;
-    width: 550px;
+    width: 100%;
     box-shadow: 0 0 5px black;
     padding: 5px 10px 10px 10px;
-    height: 36px;
-    overflow: hidden;
-    transition-duration: 0.5s;
-
-    &:hover {
-        height: 140px;
-    }
+    box-sizing: border-box;
 }
 
 .cdn-name {
@@ -505,5 +519,116 @@ body {
 
     &:hover {
         box-shadow: 0 0 5px $darkgrey;
+    }
+}
+
+.icons-container {
+    @extend %flex-center;
+    margin: 20px 10px;
+}
+
+.icon {
+    position: relative;
+
+    i:not(.close) {
+        font-size: 1.5em;
+        color: white;
+        animation-duration: .8s;
+        @extend %flex-center;
+        width: 50px;
+        height: 50px;
+        margin: 0 5px;
+        cursor: pointer;
+        background-color: $darkgrey;
+        border-radius: 50%;
+
+        &:hover{
+            text-shadow: 0 0 10px $blue;
+        }
+    }
+
+    .close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: $red;
+        font-size: .8rem;
+        cursor: pointer;
+        opacity: 0;
+        transition-duration: 0.2s;
+
+        &:hover {
+            text-shadow: 0 0 5px darken($red, 10%);
+        }
+    }
+
+    &:hover .close {
+        opacity: 1;
+    }
+}
+
+.add-icon {
+    font-size: 1.5em;
+    @extend %flex-center;
+    width: 50px;
+    height: 50px;
+    margin: 0 5px;
+    cursor: pointer;
+    border: 2px solid $darkgrey;
+    border-radius: 50%;
+    box-sizing: border-box;
+
+    &:hover i {
+        transform-origin: center;
+        animation-iteration-count: infinite;
+        animation-duration: 1.5s;
+        animation-name: turnIcon;
+    }
+}
+
+.new-icon {
+    position: relative;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 50px;
+    margin: 0 5px;
+    border: 2px solid $darkgrey;
+    border-radius: 10px;
+    box-sizing: border-box;
+
+    i {
+        cursor: pointer;
+        z-index: 1;
+    }
+
+    .fa-times {
+        position: absolute;
+        right: 8px;
+        top: 5px;
+        color: $red;
+
+        &:hover {
+            text-shadow: 0 0 5px darken($red, 10%);
+        }
+    }
+
+    .fa-check {
+        position: absolute;
+        right: 5px;
+        bottom: 5px;
+        color: $green;
+
+        &:hover {
+            text-shadow: 0 0 5px darken($green, 10%);
+        }
+    }
+
+    input {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        text-align: center;
     }
 }

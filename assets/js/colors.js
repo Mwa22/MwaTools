@@ -1,4 +1,4 @@
-// Copy text to clipboard.
+// Copy element's text to clipboard.
 function copyToCb(elem) {
     // Create temp input.
     const $temp = $("<input class='hidden-input'>");
@@ -6,6 +6,19 @@ function copyToCb(elem) {
     $("body").append($temp);
     // Adding value into it.
     $temp.val($(elem).text().trim()).select();
+    // Copy to clipboard.
+    document.execCommand("copy");
+    $temp.remove();
+}
+
+// Copy text to clipboard.
+function copyToCbText(text) {
+    // Create temp input.
+    const $temp = $("<input class='hidden-input'>");
+    // Add it to body.
+    $("body").append($temp);
+    // Adding value into it.
+    $temp.val(text).select();
     // Copy to clipboard.
     document.execCommand("copy");
     $temp.remove();
@@ -91,6 +104,52 @@ function generateColors() {
 
     addNewColorCreation();
     addPlusButton();
+    
+    // Color copy event.
+    colorCopyEvent($(".color"));
+    // Remove color event.
+    removeColorEvent($(".color"));
+
+    // Display new color creation.
+    $(".add-color").click(() => {
+        hidePlusButton();
+        showNewColorCreation();
+    });
+
+    // Handle new color input.
+    $(".new-color input").keyup(handleNewColorInput);
+    // Select text when focus.
+    $(".new-color input").focus(() => $(".new-color input").select());
+
+    // Hide new color creation.
+    $(".new-color .fa-times").click(() => {
+        hideNewColorCreation();
+        showPlusButton();
+    });
+
+    // Adding new color.
+    $(".new-color .fa-check").click(() => {
+        let value = $(".new-color").css("background-color");
+
+        // Get rgb array.
+        value = value.slice(4).split(')')[0].split(',');
+        // Get hex string.
+        value = fullColorHex(value);
+
+        // Save color in localstorage.
+        addColor(value);
+
+        // Insert in the last color position.
+        let colorElem = createColorElem(value).insertBefore(".new-color");
+
+        // Load events.
+        colorCopyEvent(colorElem);
+        removeColorEvent(colorElem);
+
+        // Hide new color creation.
+        hideNewColorCreation();
+        showPlusButton();
+    });
 }
 
 // Add plus button.
@@ -126,7 +185,7 @@ function addNewColorCreation() {
 }
 
 // show new color creation.
-function shoNewColorCreation() {
+function showNewColorCreation() {
     $(".new-color").css("display", "flex");
 
     // Reset.
@@ -195,50 +254,4 @@ function removeColorEvent(colorElem) {
 $(document).ready(async () => {
     createDefaultColors();
     generateColors();
-
-    // Color copy event.
-    colorCopyEvent($(".color"));
-    // Remove color event.
-    removeColorEvent($(".color"));
-
-    // Display new color creation.
-    $(".add-color").click(() => {
-        hidePlusButton();
-        shoNewColorCreation();
-    });
-
-    // Handle new color input.
-    $(".new-color input").keyup(handleNewColorInput);
-    // Select text when focus.
-    $(".new-color input").focus(() => $(".new-color input").select());
-
-    // Hide new color creation.
-    $(".new-color .fa-times").click(() => {
-        hideNewColorCreation();
-        showPlusButton();
-    });
-
-    // Adding new color.
-    $(".new-color .fa-check").click(() => {
-        let value = $(".new-color").css("background-color");
-
-        // Get rgb array.
-        value = value.slice(4).split(')')[0].split(',');
-        // Get hex string.
-        value = fullColorHex(value);
-
-        // Save color in localstorage.
-        addColor(value);
-
-        // Insert in the last color position.
-        let colorElem = createColorElem(value).insertBefore(".new-color");
-
-        // Load events.
-        colorCopyEvent(colorElem);
-        removeColorEvent(colorElem);
-
-        // Hide new color creation.
-        hideNewColorCreation();
-        showPlusButton();
-    });
 });

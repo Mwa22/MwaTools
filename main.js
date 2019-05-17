@@ -24,7 +24,7 @@ app.on("ready", () => {
         slashes: true
     }));
 
-    // window.webContents.openDevTools();
+    window.webContents.openDevTools();
 
     // Show window when page is ready
     window.once("ready-to-show", () => {

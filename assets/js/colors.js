@@ -191,6 +191,8 @@ function showNewColorCreation() {
     // Reset.
     $(".new-color input").val("#ffffff");
     $(".new-color").css("background-color", "white");
+    
+    $(".new-color input").focus();
 }
 
 // hide new color creation.

@@ -82,15 +82,22 @@ body {
     }
 }
 
-.separator {
-    width: 90%;
-    margin: auto;
-    height: 2px;
-    background-color: $darkgrey;
+.section-container {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 10px;
+    padding: 10px;
+    background-color: lighten($grey, 10%);
+}
+
+.section-title {
+    font-family: Montserrat;
+    margin: 0 0 10px 10px;
+    font-size: 1.5rem;
+    color: $darkgrey;
 }
 
 .colors-container {
-    margin: 20px 10px;
     display: flex;
     flex-wrap: wrap;
 }
@@ -254,7 +261,6 @@ body {
 .fonts-container {
     @extend %flex-center;
     flex-direction: column;
-    margin: 20px 10px;
 }
 
 .fonts {
@@ -461,7 +467,6 @@ body {
 }
 
 .cdn-container {
-    margin: 20px 10px;
 }
 
 .cdn {
@@ -524,7 +529,6 @@ body {
 
 .icons-container {
     @extend %flex-center;
-    margin: 20px 10px;
 }
 
 .icon {
